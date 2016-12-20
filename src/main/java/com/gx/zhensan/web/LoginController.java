@@ -41,7 +41,6 @@ public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-	// 给工作流使用所添加的变量
 	public static final String USERID = "userId";
 	public static final String PASSWORD = "password";
 
