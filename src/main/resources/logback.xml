@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<Encoding>UTF-8</Encoding>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[日期：%d] [线程名：%t] [日志级别：%p] [类路径：%c] [方法名：%M] [记录消息：%m] %n</pattern>
+		</layout>
+	</appender>
+
+	<!-- 按照每天、按照大小生成日志文件 -->
+	<appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<Encoding>UTF-8</Encoding>
+		<file>logs/UC_SYS_CONFIG_LOG.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/UC_SYS_CONFIG_LOG.%d-%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<!-- <maxHistory>30</maxHistory> 最多保留多少天的日志-->
+		</rollingPolicy>
+		<encoder>
+			<pattern>[日期：%d] [线程名：%t] [日志级别：%p] [类路径：%c] [方法名：%M] [记录消息：%m] %n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="ROLLINGFILE" />
+	</root>
+
+</configuration>

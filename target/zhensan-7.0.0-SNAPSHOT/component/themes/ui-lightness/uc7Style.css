@@ -1,0 +1,593 @@
+@charset "utf-8";
+
+/* -------------
+    * 整体样式 *
+* ------------- */
+body {
+	font-size: 12px;
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+.ui-widget {
+	font-size: 12px;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+	/*height:13px;*/
+}
+.ui-button .ui-button-text { line-height: 1.1; *line-height: 0.7;}
+/* .ui-state-hover .ui-button-text { line-height: 1.1; *line-height: 0.7;} */
+input.ui-button { line-height: 1.1; *line-height: 1.5; padding:1px 8px 1px 8px; padding:3px 8px 3px 8px \9;*padding:0 10px 0 10px;}
+em{
+	color:red;
+	font-size: 16px;
+	margin:5px;
+	width:10px;
+	vertical-align: top;
+}
+
+/* -------------
+    * 改变文字反选背景色（IE不支持）  *
+* ------------- */
+::selection { 
+background:#fff0a5; 
+}/* Safari等其他标准浏览器 */
+::-moz-selection { 
+background:#fff0a5; 
+}/* Firefox */ 
+::-webkit-selection { 
+background:#fff0a5; 
+} 
+
+/* -------------
+    * 文本框 TextBox 密码框 Password 建议框 SuggestBox *
+* ------------- */
+.uc7-text
+{
+    position:relative;
+    border:1px solid #AECAF0; 
+	height:20px; 
+	line-height:20px;
+    width:130px; 
+	background:white;
+}
+.uc7-text:hover{border-color:#01AAEE;}
+.uc7-text:focus{ border-color:#FF8801;}
+.uc7-text-default{color:#CCCCCC;}
+/* -------------
+    * 多行文本框 TextArea *
+* ------------- */
+.uc7-textarea
+{
+    position:relative;
+    border:1px solid #AECAF0; 
+	line-height:20px;
+    width:130px; 
+	background:white;
+	overflow-y: auto;
+}
+.uc7-textarea:hover{border-color:#01AAEE;}
+.uc7-textarea:focus{ border-color:#FF8801;}
+
+/* -------------
+    * 链接 Link *
+* ------------- */
+.uc7-link:link, .uc7-link:visited {
+    color: #1B75BB;
+    text-decoration: none;
+}
+.uc7-link:hover, .uc7-link:active {
+    color: #0B559B;
+	text-decoration:underline;
+}
+
+/* -------------
+    * 单选框 RadioBox *
+* ------------- */
+.uc7-hidden {
+    display: none;
+}
+.uc7-radio-wrapper{
+	display: -moz-inline-stack;display:inline-block; zoom: 1;*display: inline; margin-right:2px;
+}
+.uc7-radio {
+	background:url('images/radio.gif') no-repeat 0 0;
+	vertical-align: top;
+	height: 13px;
+	width: 13px;
+	overflow:hidden;
+	display: -moz-inline-stack;display:inline-block; zoom: 1;*display: inline;
+}
+a.uc7-radio-checked
+{
+    background-position:0 -13px;
+}
+.over a.uc7-radio
+{
+    background-position:-13px 0px;
+}
+.over a.uc7-radio-checked
+{
+    background-position:-13px -13px;
+}
+a.uc7-radio-disabled
+{
+    background-position:-39px 0px;
+	cursor:default;
+}
+a.uc7-radio-disabled-checked
+{
+    background-position:-39px -13px;
+	cursor:default;
+}
+
+/* -------------
+    * 复选框 CheckBox *
+* ------------- */
+.uc7-checkbox-wrapper{
+	display: -moz-inline-stack;display:inline-block; zoom: 1;*display: inline;margin:0 auto;margin-right:2px; padding:0;}
+a.uc7-checkbox {
+	background:url('images/checkbox.gif') no-repeat 0 0;
+	vertical-align: top;
+	height: 13px;
+	width: 13px; margin:0 auto;
+	overflow:hidden;
+	display: -moz-inline-stack;display:inline-block; zoom: 1;*display: inline;
+}
+a.uc7-checkbox-checked
+{
+    background-position:0 -13px;
+}
+.over a.uc7-checkbox
+{
+    background-position:-13px 0px;
+}
+.over a.uc7-checkbox-checked
+{
+    background-position:-13px -13px;
+}
+a.uc7-checkbox-disabled
+{
+    background-position:-39px 0px;
+	cursor:default;
+}
+a.uc7-checkbox-disabled-checked
+{
+    background-position:-39px -13px;
+	cursor:default;
+}
+
+/* -------------
+    * ListBox *
+* ------------- */
+.uc7-listbox{
+	width:462px;
+	border:1px solid #ccc;
+}
+.uc7-listbox .uc7-listbox-name label{
+	color: #e87b10;
+}
+.uc7-listbox .uc7-listbox-list, .uc7-listbox .uc7-listbox-checked{
+	border:1px solid #dddddd;
+	width:180px;
+	vertical-align:top; 
+	padding:3px;	
+	overflow:auto;
+}
+.uc7-listbox .flag{
+	border: 1px solid transparent;
+	line-height: 20px;
+}
+.uc7-listbox .ui-state-hover{
+	border: 1px solid #fbcb09;
+	font-weight: normal;
+}
+.uc7-listbox .ui-state-highlight{
+	border: 1px solid #fed22f;
+	font-weight: normal;
+}
+.uc7-listbox .uc7-listbox-btn button{
+	width:50px;
+	margin:5px 10px;
+}
+.uc7-listbox .gray{
+	color: gray;
+}
+.uc7-listbox .selected{
+	background-color: red;
+}
+.disableddiv{
+position:absolute;
+top:0px;
+left:0px;
+width:100%;
+height:100%;
+background-color:#333;
+filter:alpha(opacity=10);
+-moz-opacity:0.1;
+-khtml-opacity: 0.1;
+opacity: 0.1;
+z-Index:999;
+}
+
+/* -------------
+    * progressBar *
+* ------------- */
+.ui-progressbar-value { background-image: url(images/pbar-ani.gif); }
+
+/* -------------
+    * horizontalPanel *
+* ------------- */
+.uc7-horizontalpanel{
+	height:30px;
+	padding:0 5px 0 0;
+	white-space:nowrap;
+/* 	display: inline; */
+}
+
+/* -------------
+    * VerticalPanel *
+* ------------- */
+ul.uc7-verticalpanel {	
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+ul.uc7-verticalpanel li{	
+	padding:0 0 0 5px;
+}
+
+/* -------------
+    * GridPanel *
+* ------------- */
+.uc7-gridpanel{
+	width:100%; 
+	margin:5px 0;
+	border-collapse:collapse;
+}
+.uc7-gridpanel td{
+	border:1px solid #dddddd;
+	text-align:left;
+	padding: .3em .2em .2em .3em;
+}
+.uc7-gridpanel th{
+	border:1px solid #dddddd;
+	padding: 3px 5px 5px;
+}
+
+/* -------------
+    * ScrollPanel *
+* ------------- */
+.uc7-vscrollpanel{
+	height:100px;
+	margin:5px 0; 
+	border:1px solid #dddddd; 
+	overflow-y:scroll;
+	overflow-x: none;
+}
+.uc7-hscrollpanel{
+	width:500px;
+	margin:5px 0; 
+	border:1px solid #dddddd; 
+	overflow-y:none;
+	overflow-x:scroll;
+}
+.uc7-scrollpanel{
+	width:500px;
+	height:100px;
+	margin:5px 0; 
+	border:1px solid #dddddd; 
+	overflow:scroll;
+}
+
+/* -------------
+    * FlowPanel *
+* ------------- */
+.uc7-flowpanel{
+	height:30px;
+	padding:0 5px 0 0;
+}
+
+/* -------------
+    * tree *
+* ------------- */
+.uc7-tree{
+	font-size:12px;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+.uc7-tree li{
+	white-space:nowrap;
+}
+.uc7-tree li ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	padding-left: 20px;
+}
+.uc7-tree-node{
+	height:18px;
+	white-space:nowrap;
+	cursor:pointer;
+}
+.uc7-tree-indent{
+	display:inline-block;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+}
+.uc7-tree-hit{
+	cursor:pointer;
+}
+.uc7-tree-expanded{
+	display:inline-block;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+	background:url('images/tree_arrows.gif') no-repeat -18px 0px;
+}
+.uc7-tree-expanded-hover{
+	background:url('images/tree_arrows.gif') no-repeat -50px 0px;
+}
+.uc7-tree-collapsed{
+	display:inline-block;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+	background:url('images/tree_arrows.gif') no-repeat 0px 0px;
+}
+.uc7-tree-collapsed-hover{
+	background:url('images/tree_arrows.gif') no-repeat -32px 0px;
+}
+.uc7-tree-folder{
+	display:inline-block;
+	background:url('images/tree_folder.gif') no-repeat;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+}
+.uc7-tree-folder-open{
+	background:url('images/tree_folder_open.gif') no-repeat;
+}
+.uc7-tree-file{
+	display:inline-block;
+	background:url('images/tree_file.gif') no-repeat;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+}
+.uc7-tree-loading{
+	background:url('images/tree_loading.gif') no-repeat;
+}
+.uc7-tree-title{
+	display:inline-block;
+	text-decoration:none;
+	vertical-align:middle;
+	padding:1px 2px 1px 2px;
+	white-space:nowrap;
+}
+
+.uc7-tree-node-hover{
+	background:#fafafa;
+}
+.uc7-tree-node-selected{
+	background:#FBEC88;
+}
+.uc7-tree-checkbox{
+	display:inline-block;
+	width:16px;
+	height:18px;
+	vertical-align:middle;
+}
+.uc7-tree-checkbox0{
+	background:url('images/tree_checkbox_0.gif') no-repeat;
+}
+.uc7-tree-checkbox1{
+	background:url('images/tree_checkbox_1.gif') no-repeat;
+}
+.uc7-tree-checkbox2{
+	background:url('images/tree_checkbox_2.gif') no-repeat;
+}
+.uc7-tree-node-proxy{
+	font-size:12px;
+	padding:1px 2px 1px 18px;
+	background:#fafafa;
+	border:1px solid #ccc;
+	z-index:9900000;
+}
+.uc7-tree-dnd-yes{
+	background:url('images/tree_dnd_yes.png') no-repeat 0 center;
+}
+.uc7-tree-dnd-no{
+	background:url('images/tree_dnd_no.png') no-repeat 0 center;
+}
+.uc7-tree-node-top{
+	border-top:1px dotted red;
+}
+.uc7-tree-node-bottom{
+	border-bottom:1px dotted red;
+}
+.uc7-tree-node-append .uc7-tree-title{
+	border:1px dotted red;
+}
+.uc7-tree-editor{
+	border:1px solid #ccc;
+	font-size:12px;
+	line-height:16px;
+	width:80px;
+	position:absolute;
+	top:0;
+}
+/* -------------
+    * form.cmxform *
+* ------------- */
+form.uc7-cmxform {
+
+}
+form.uc7-cmxform legend {
+	padding: 0 2px;
+	font-weight: bold;
+	_margin: 0 -7px; /* IE Win */
+}
+form.uc7-cmxform p>label {
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width: 80px;
+}
+form.uc7-cmxform >fieldset {
+	border: none;
+/* 	border-top: 1px solid #C9DCA6; */
+/* 	background-color: #F8FDEF; */
+	margin-bottom: 10px;
+}
+form.uc7-cmxform fieldset p {
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	background: url(images/cmxform-divider.gif) left bottom repeat-x;
+}
+/* form.cmxform fieldset fieldset { */
+/* 	background: none; */
+/* 	padding: 5px 10px 7px; */
+/* 	border: none; */
+/* 	margin: 3px 0 0; */
+/* 	background: url(images/cmxform-divider.gif) left bottom repeat-x; */
+/* } */
+/* form.cmxform fieldset fieldset legend { */
+/* 	padding: 0 0 5px; */
+/* 	font-weight: normal; */
+/* } */
+/* form.cmxform fieldset fieldset label { */
+/* 	display: block; */
+/* 	width: auto; */
+/* 	margin-left: 10px; */
+/* } */
+form.uc7-cmxform label.error, label.error {
+	color: red;
+	font-style: italic;
+	margin-left: 10px;
+	width: 225px;
+}
+form.uc7-cmxform input.submit {
+	margin-left: 103px;
+}
+div.error { display: none; }
+input.error { border: 1px dotted red;}
+/* form.uc7-cmxform .gray * { color: gray; } */
+
+/* -------------
+    * menu*
+* ------------- */
+.ui-menu {
+	position: absolute;
+	min-width: 100px;
+}
+/* -------------
+    * toolbar :需要根据具体的toolbar的father进行修改   *
+* ------------- */
+.toolbarBg {
+	width: 100%; 
+	border: 1px solid #cccccc;
+	border-bottom:0;
+	background: #f6f6f6 url(images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;
+}
+.toolbarBg .ui-state-default{
+	 border: 1px solid #dddddd; 
+	 margin: 0px;
+}
+.toolbarBg .ui-state-hover{
+	 border: 1px solid #fed22f; 
+}
+.toolbarBg .ui-state-focus{
+	 border: 1px solid #fbcb09;
+}
+.toolbarBg .menu div { 
+	margin-right: 7px; 
+}
+/* -------------
+    * moduleMenu*
+* ------------- */
+.ui-content li{
+	list-style-type:none;
+}
+.ui-content ul{
+	margin: 0;
+	padding: 0;
+}
+/* -------------
+    * layout*
+* ------------- */
+.ui-layout-pane { /* all 'panes' */
+	border:		1px solid #BBB;
+	padding:	5px; 
+}
+.ui-layout-resizer	{
+	background:		#f6f6f6;
+	border:			1px solid #BBB;
+	border-width:	0;
+}
+.ui-layout-resizer-open-hover ,.ui-layout-resizer-dragging {
+	border: 1px solid #fbcb09; 
+	background: #fdf5ce url(images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x; 
+}
+.ui-layout-toggler {
+	border-width: 0; 
+	background: #f6f6f6 url(images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;
+}
+.ui-layout-toggler-hover , /* need when NOT resizable */
+.ui-layout-resizer-hover .ui-layout-toggler-hover { /* need specificity when IS resizable */
+	border-width: 0; 
+	background: #fdf5ce url(images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x; 
+}
+.ui-layout-toggler-north-open, .ui-layout-toggler-south-closed {
+    background: url(images/toggle-up.gif) no-repeat scroll center bottom transparent;
+}
+.ui-layout-toggler-north-closed, .ui-layout-toggler-south-open {
+    background: url(images/toggle-dn.gif) no-repeat scroll center top transparent;
+}
+.ui-layout-toggler-east-closed, .ui-layout-toggler-west-open {
+    background: url(images/toggle-lt.gif) no-repeat scroll right center transparent;
+}
+.ui-layout-toggler-east-open {
+    background: url(images/toggle-rt.gif) no-repeat scroll left center transparent;
+}
+.ui-layout-resizer-west-closed {
+    background-color: #DDDDDD;
+    border-bottom: 1px solid #667777;
+    border-left: 1px solid #667777;
+    border-top: 1px solid #667777;
+}
+.ui-layout-resizer-west-closed:hover {
+    background-color: #E6E6E6;
+}
+.ui-layout-resizer-west-closed:hover .content {
+    color: #CC3300;
+}
+.ui-layout-toggler-west-closed {
+    background-color: #EEEEEE;
+    border-bottom: 1px solid #667777;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+}
+.ui-layout-toggler-west-closed:hover {
+    background-color: #F6F6F6;
+}
+.ui-layout-toggler-west-closed .content {
+    color: #003333;
+    font-size: 12px !important;
+    font-weight: bold;
+    padding-right: 1px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* -------------
+    * dialog *
+* ------------- */
+p.uc7-dialogwbtn{ position:absolute; top:2px; padding:0; right:0; display:inline;}
+p.uc7-dialogwbtn .uc7-titlebar-close {position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0;*margin:0; padding: 1px; height: 18px; }
+p.uc7-dialogwbtn .uc7-titlebar-close span { display: block;  margin: 1px;} 
+p.uc7-dialogwbtn .uc7-titlebar-max{position: absolute;right: 2.3em; width: 19px; margin: -10px 0 0 0;*margin:0; padding: 1px; height: 18px;  }
+p.uc7-dialogwbtn .uc7-titlebar-max span { display: block; margin: 1px; }
+
+

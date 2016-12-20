@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:component-scan base-package="com.gx.zhensan">
+	</context:component-scan>
+	<mvc:annotation-driven />
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/score/**" />
+			<bean class="com.gx.zhensan.web.interceptor.InvalidLoginInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/score/**" />
+			<bean class="com.gx.zhensan.web.interceptor.SessionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000" />
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
+		<property name="url" value="jdbc:jtds:sqlserver://192.168.1.24:1433/TEST_YUANYW" />
+		<property name="username" value="sa" />
+		<property name="password" value="1q2w3e." />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:configuration.xml" />
+		<property name="mapperLocations" value="classpath:mappers/*.xml" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="commonQuery" class="com.gx.zhensan.service.base.CommonQueryImpl">
+		<property name="dialect" ref="dialectClass" />
+		<property name="sqlsessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="exCommon" class="com.gx.zhensan.service.base.ExCommonImpl">
+		<property name="dialect" ref="dialectClass" />
+		<property name="sqlsessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="dialectClass" class="com.gx.zhensan.util.dialect.SQLServer2005Dialect" />
+	
+</beans>

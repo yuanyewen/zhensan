@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+/* -------------
+    * 整体样式 *
+* ------------- */
+body {
+	font-size: 12px;
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+.ui-widget {
+	font-size: 12px;
+}
+
+/* -------------
+    * DM登陆界面  *
+* ------------- */
+.logincenter{
+	position: absolute;
+	width: 635px;
+	height: 380px; 
+	top:50%;
+	left:50%; 
+	margin-top:-200px; 
+	margin-left: -317px;
+}
+.login{
+	position: relative;
+	width: 635px;
+	height: 380px; 
+	background:#ece9e6 url(images/login.png) no-repeat;
+}
+.login p{
+	position: relative;
+	top: 165px;
+	left: 294px;
+	width: 282px;
+	*margin:8px;
+	*top: 161px;
+	*left: 290px;
+}
+.login p label{
+	display: inline-block;
+	width: 70px;
+	*vertical-align: top;
+	*margin-top:5px;
+}
+.login p select{
+	width:206px;	
+}
+.login p input{
+	width: 200px;
+}
+.login p button{
+	width: 100px;
+	margin-right: 2px;
+	*margin-right: 3px;
+}

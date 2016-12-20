@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>注册</title>
+<link rel="stylesheet" type="text/css" media="screen"
+	href="component/themes/ui-lightness/jquery-ui-1.8.13.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+    href="component/themes/ui-lightness/login.css">
+<link rel="stylesheet"
+	href="component/themes/ui-lightness/component.css" />
+<link rel="stylesheet"
+	href="component/themes/ui-lightness/content/tango/skin.css" />
+
+<script src="component/js/jquery-1.6.1.min.js"></script>
+<script src="component/js/jquery.layout-1.3.0.js"></script>
+<script src="component/js/ui/jquery.effects.core.js"></script>
+<script src="component/js/ui/jquery.effects.blind.js"></script>
+<script src="component/js/ui/jquery.effects.bounce.js"></script>
+<script src="component/js/ui/jquery.effects.clip.js"></script>
+<script src="component/js/ui/jquery.effects.drop.js"></script>
+<script src="component/js/ui/jquery.effects.explode.js"></script>
+<script src="component/js/ui/jquery.effects.fade.js"></script>
+<script src="component/js/ui/jquery.effects.fold.js"></script>
+<script src="component/js/ui/jquery.effects.highlight.js"></script>
+<script src="component/js/ui/jquery.effects.pulsate.js"></script>
+<script src="component/js/ui/jquery.effects.scale.js"></script>
+<script src="component/js/ui/jquery.effects.shake.js"></script>
+<script src="component/js/ui/jquery.effects.slide.js"></script>
+<script src="component/js/ui/jquery.effects.transfer.js"></script>
+
+<script src="component/js/ui/jquery.ui.core.js"></script>
+<script src="component/js/ui/jquery.ui.widget.js"></script>
+<script src="component/js/ui/jquery.ui.accordion.js"></script>
+<script src="component/js/ui/jquery.ui.position.js"></script>
+<script src="component/js/ui/jquery.ui.menu.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.autocomplete.js"></script>
+<script src="component/js/ui/jquery.ui.button.js"></script>
+<script src="component/js/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="component/js/ui/jquery.ui.datepicker.js"></script>
+<script src="component/js/ui/jquery.ui.dialog.js"></script>
+<script src="component/js/ui/jquery.ui.mouse.js"></script>
+<script src="component/js/ui/jquery.ui.draggable.js"></script>
+
+<script src="component/js/ui/jquery.ui.droppable.js"></script>
+
+
+<script src="component/js/ui/jquery.ui.progressbar.js"></script>
+<script src="component/js/ui/jquery.ui.resizable.js"></script>
+<script src="component/js/ui/jquery.ui.selectable.js"></script>
+<script src="component/js/ui/jquery.ui.slider.js"></script>
+<script src="component/js/ui/jquery.ui.sortable.js"></script>
+
+<script src="component/js/ui/jquery.ui.tabs.js"></script>
+
+<script src="component/js/ui/jquery.ui.util.uc7.js"></script>
+<script src="component/js/i18n/grid.locale-cn.js"></script>
+<script src="component/js/jquery.form.js"></script>
+<script src="component/js/ui/jquery.fmatter.js"></script>
+<script src="component/js/ui/jquery.grid.base.js"></script>
+<script src="component/js/content/jquery.jcarousel.min.js"></script>
+
+<script src="component/js/ui/jquery.ui.toolbar.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.modulemenu.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.listbox.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.tree.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.checkbox.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.radio.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.promptdialog.uc7.js"></script>
+<script src="component/js/ui/jquery.ui.groupbutton.uc7.js"></script>
+<script src="component/js/jquery.validate.js"></script>
+<script src="component/js/jquery.validate.uc7.js"></script>
+<script src="component/js/i18n/messages_cn.js" ></script>
+
+
+
+<script type="text/javascript">
+
+$(function(){
+	$(document).ready(
+		function()
+		{
+		    
+		}
+	);
+	
+	var myLayout;
+	//布局
+	myLayout = $('body').layout({
+		north__resizable : false,//不可以改变大小 
+		north__size : 140,//pane的大小  
+		south__resizable : false,
+		south__size : 30,
+		west__size : 250,
+		west__spacing_closed : 20,
+		west__togglerLength_closed : 100,
+		west__togglerAlign_closed : "top",
+		west__togglerContent_closed : "M<BR>E<BR>N<BR>U",
+		west__togglerTip_closed : "打开菜单",
+		west__sliderTip : "滑动打开菜单",
+		west__slideTrigger_open : "mouseover",
+		west__onresize_end : 	function(){$('.ui-layout-west').moduleMenu('reloadHeight',$('.ui-layout-west').height());},
+		togglerTip_open:"关闭",
+	    togglerTip_closed:"打开"
+	});
+	
+	$("#div_rule").show();
+	$("#div_registerInfo").hide();
+	
+	
+	$("#register_btn").bind('click',function(){
+		var flag=true;
+		var checks=document.getElementsByName("checkboxxz");
+		for(var i=0;i<checks.length;i++){
+			if(checks[i].checked==false){
+				flag=false;
+				break;
+			}
+		}
+		if(flag){
+			$("#div_rule").hide();
+			$("#div_registerInfo").show();
+		}else{
+			alert("请仔细阅读以上信息,并请在全部选择框内点击打勾!");
+			return;
+		}
+	});
+	
+	
+	$('#registerInfo_Form').validate({      
+	    /**//* 设置验证规则 */  
+	    rules: {      
+	    	new_userId: {      
+	            required:true,
+	            maxlength: 20
+	            ,validDataByReg:'^[A-Za-z0-9]+$'
+	        }, 
+	        new_userName: {      
+	            required:true,
+	            maxlength: 50
+	        },
+	        new_password: {      
+	            required:true,
+	            maxlength: 20
+	        },
+	        new_repassword: {      
+	            required:true,
+	            maxlength: 20
+	        },
+	        new_email: {      
+	            required:true,
+	            email:true
+	        }
+		}, messages:{
+			addUser_userId: {      
+				validDataByReg:'请输入合法的数据(仅能输入1-20位数字或字母)'
+	        }
+	    }
+				    
+	}); 
+	
+	$("#register_add").bind('click',function(){
+		if ($('#registerInfo_Form').valid()){
+			var newPassword=$("#new_password").val();
+			var reNewPassword=$("#new_repassword").val();
+
+			if (reNewPassword!=newPassword) {
+				alert("两次输入密码不一致!");
+				$("#new_password").focus();
+			}else{		
+				var userId=$("#new_userId").val();
+				$.ajax({
+					type: "GET",  
+					url: "main/validateUser",
+					data: {"userId":userId},
+					success: function(data){
+						if (data.exist=="1"){
+							alert("此登录名已存在！");
+							$("#new_userId").focus();
+						}else{
+							$('#registerInfo_Form').ajaxSubmit({
+					        	url : 'main/addUser',
+					        	type : 'POST',
+					        	success : function(data) {
+					        		alert("注册成功,请登录！");
+					        		window.location.href='login.html'
+					            },
+					           	error: function(jqXHR, textStatus, errorThrown) {
+					           		
+					           	}
+					        });
+						}
+					} 
+				});
+				
+				
+			}
+		}
+	});
+
+	
+		
+		
+});
+
+</script>
+</head>
+<body onselectstart="return false">
+<div class="pane ui-layout-north">
+<table class="northPanel ui-widget-content">
+	<tr>
+		<td>
+			<img src="component/themes/ui-lightness/images/logo.gif" height="90" width="1330"></img>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+		<div class="northMessage">
+			<label>欢迎注册真三积分系统</label>
+		</div>
+		</td>
+	</tr>
+</table>
+</div>
+<div class="pane ui-layout-west">
+	<img src="component/themes/ui-lightness/images/2222.jpg" height="380" width="240"></img>
+</div>
+<div id="divcenterId" class="pane ui-layout-center">
+	<div id="div_rule">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好，您将要注册真三积分系统并参与真三比赛，请您仔细阅读以下注意事项，
+        	并在每条已阅事项之前勾选复选框以示确认&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;真三积分规则明细：&nbsp;&nbsp;&nbsp;
+        </p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            1、须三人及三人以上开始计分。
+           </p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            2、个人积分组成为基础分+贡献分。
+          </p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            3、基础分为每场胜出则加分，输了则扣分。
+           </p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            4、按房间的等级输赢基础分不同，参与评分的VS房间最低等级为7级：
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7级 赢基础分为5， 输为10；</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9级 赢基础分为10，输为8；</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11级 赢基础分为15，输为5；</p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            5、每场贡献分按：杀人数-死亡数+助攻数的总和排名依次加分，分别加  5,4,3,2,1分
+          </p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            6、说好来的需定好自己能到的时间点，并对此时间负责，迟到半小时以内者扣2分
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;处罚，1小时以内者4分处罚，1小时以上5分；如果不来则处罚10分处理。</p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            7、中途有事需告知队友原由，经过同意，不做处理，否者轻者不计算当前战局积
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分，重者处罚10分，并踢出该次活动。</p>
+          <p>
+            <input type="checkbox" name="checkboxxz" value="checkbox" />
+            8、活动结束后积分负责人在下次活动前需上传积分，并公告群通知，有异议者请提出书面申请
+          </p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并由搞基领导小组审议。</p>
+          
+          	<p align="center">
+				<button id="register_btn">注册</button>
+			</p>
+      </div>
+      <div id="div_registerInfo">
+		<form id="registerInfo_Form" class="uc7-cmxform" action="" method="post" enctype="multipart/form-data">		
+		<fieldset>
+			<p align="center">请输入个人信息</p>
+			<p><label>登录名：</label> <input id="new_userId" name="new_userId" value=""></p>
+			<p><label>搞基名：</label> <input id="new_userName" name="new_userName"  value=""></p>
+			<p><label>密码：</label> <input id="new_password" name="new_password" type="password" value=""></p>
+			<p><label>确认密码：</label> <input id="new_repassword" name="new_repassword" type="password" value=""></p>
+			<p><label>QQ：</label> <input id="new_qq" name="new_qq"  value=""></p>
+			<p><label>联系电话：</label> <input id="new_phone" name="new_phone"  value=""></p>
+			<p><label>Email：</label> <input id="new_email" name="new_email"  value=""></p>
+			<p><label>搞基自白:</label><textarea id="new_description"  name="new_description" cols=100 rows=4></textarea></p>
+			<p><label>上传照片：</label><input type="file" id="file_upload" name="file_upload"/></p>
+			
+		</fieldset>
+			
+		</form>
+		<p align="center"> <button id="register_add">注册</button> </p>
+	</div>
+</div>
+
+
+<div class="pane ui-layout-south">2叔的爱真三AR小分队</div>
+		
+</body>	
+</html>

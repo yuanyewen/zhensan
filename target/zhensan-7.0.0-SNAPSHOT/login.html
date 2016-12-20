@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登录</title>
+<link rel="stylesheet" type="text/css" media="screen"
+	href="component/themes/ui-lightness/jquery-ui-1.8.13.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+    href="component/themes/ui-lightness/login.css">
+<script src="component/js/jquery-1.6.1.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+$(function(){
+	$(document).ready(
+		function()
+		{
+		    $("#loginForm").submit
+		    (	
+		       function()
+		        {
+		        login();
+		        return false;
+		        }
+		    );
+		}
+	);
+	
+	$("#register").bind('click',function(){
+		window.location.href='register.html'
+	});
+
+	$("#login_login").attr("disabled",false);
+	$("#login_cancel").attr("disabled",false);
+
+	function login()
+	{
+		var userId = $("#login_userId").val();
+		var password = $("#login_password").val();
+		if (userId == "")
+		{
+		    $("#confirm").text("请输入登录用户名");
+		    $("#login_userId").focus();
+		    return false;
+		}
+		if(password == "")
+		{
+		    $("#confirm").text("请输入登录密码");
+		    $("#login_password").focus();
+		    return false;
+		}
+		$.ajax({
+		    type: "POST",
+		    url: "main/login",
+		    data: "userId=" + userId + "&password=" + password,
+		    beforeSend: function(){
+		    	$("confirm").text("登录中，请稍候......");
+		    	$("#login_login").attr("disabled",true);
+		    	$("#login_cancel").attr("disabled",true);
+		    },
+		    success: function(data){
+		    	var massage = data.msg;
+			    if(massage == "success"){
+			        $("#confirm").text("登录成功，欢迎" + userId + "回来！正在进入系统......");
+			        window.location.href='index.jsp'
+			    }else {
+			    	$("#confirm").text(massage);
+			    	$("#login_login").attr("disabled",false);
+			    	$("#login_cancel").attr("disabled",false);
+			    }
+		    }
+		});
+	}
+		
+		
+});
+
+</script>
+</head>
+<body style="background-color: #ece9e6;">
+	<div class="logincenter">
+	<div id="login_content" class="login">
+		<form id="loginForm">
+			<p>
+				<label>系统语言：</label>&nbsp;<select id="login_type" disabled="disabled">
+					<option value="1">简体中文</option>
+					<option value="2">繁体中文</option>
+					<option value="3">English</option>
+				</select> 
+			</p>
+		
+			<p>
+				<label>用户名称：</label>&nbsp;<input id=login_userId name="userId" type=text value="">
+			</p>
+			
+			<p>
+				<label>登录密码：</label>&nbsp;<input id=login_password name="password" type=password value="">
+			</p>
+			<p align="right">
+				<button id="login_login" type="submit">登录</button>
+				<button id="login_cancel" type="reset">取消</button>
+			</p>
+			<p align="right">
+				<a id="register" class="uc7-link" style="text-decoration: underline;"href="#">小篮子没账号？来注册一个吧</a>
+			</p>
+			
+		</form>
+	</div>
+	<p id="confirm" style="color: red; vertical-align: top;text-align: center;margin: 0"></p>
+	</div>
+	
+</body>	
+</html>
